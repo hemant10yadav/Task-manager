@@ -1,0 +1,19 @@
+<h1 class="text-center" mat-dialog-title>Add a new task</h1>
+<mat-dialog-content class="mt-4">
+    <form (ngSubmit)="onSaveClick()" [formGroup]="taskForm">
+      <mat-form-field class="w-100">
+        <mat-label>Title</mat-label>
+        <input matInput formControlName="title">
+        <mat-error *ngIf="taskForm.get('title')?.hasError('required')">Title is required</mat-error>
+      </mat-form-field>
+      <mat-form-field class="w-100">
+        <mat-label>Description</mat-label>
+        <textarea matInput formControlName="description"></textarea>
+        <mat-error *ngIf="taskForm.get('description')?.hasError('required')">Description is required</mat-error>
+      </mat-form-field>
+    </form>
+</mat-dialog-content>
+<div mat-dialog-actions>
+  <button class="ms-auto" mat-button (click)="close()">Cancel</button>
+  <button mat-button type="submit" (click)="onSaveClick()" [disabled]="!taskForm.valid" color="primary">Save</button>
+</div>

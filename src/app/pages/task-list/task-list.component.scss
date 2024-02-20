@@ -1,0 +1,55 @@
+mat-header-row {
+  background: rgb(63, 81, 181);
+  color: white;
+}
+
+.mat-column-priority {
+  font-style: italic;
+}
+
+.mat-column-position, .mat-column-priority, .mat-column-ellipsis {
+  flex: 0 0 auto;
+  width: 100px;
+}
+
+.mat-column-position mat-header-cell,
+.mat-column-position mat-cell {
+  overflow: initial;
+}
+
+mat-header-cell,
+mat-cell {
+  justify-content: center;
+}
+
+
+.cdk-drag-preview {
+  box-sizing: border-box;
+  border-radius: 4px;
+  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
+    0 8px 10px 1px rgba(0, 0, 0, 0.14),
+    0 3px 14px 2px rgba(0, 0, 0, 0.12);
+  background: white;
+}
+
+.cdk-drag-placeholder {
+  background: white;
+  ;
+}
+
+.cdk-drag-animating {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.cdk-drop-list-dragging .mat-row:not(.cdk-drag-placeholder) {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+
+.mdc-text-field--filled {
+  background-color: transparent !important;
+}
+
+.sm-icon {
+  font-size: 15px;
+}

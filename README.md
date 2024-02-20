@@ -1,27 +1,42 @@
-# TaskManager
+<h1 align="center" id="title">Task Manager</h1>
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.12.
+<p id="description">Task Manager App This project was generated with Angular CLI version 16.2.12.</p>
 
-## Development server
+  
+  
+<h2>🧐 Features</h2>
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Here're some of the project's best features:
 
-## Code scaffolding
+*   Add update & delete Task.
+*   Sorting and filtering
+*   Drag and drop
+*   Routing
+*   Angular material
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+<h2>🛠️ Installation Steps:</h2>
 
-## Build
+<p>1. Install the npm package</p>
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+```
+npm install
+```
 
-## Running unit tests
+<p>2. Run the app</p>
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```
+ng s or npm start
+```
 
-## Running end-to-end tests
+  
+  
+<h2>💻 Built with</h2>
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+Technologies used in the project:
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+*   Angular 16.2.12
+*   @angular/material 16.2.14
+*   Bootstrap 5.3.2
+*   Drag and Drop
+*   Angular Routing
+*   rxjs~7.8.0

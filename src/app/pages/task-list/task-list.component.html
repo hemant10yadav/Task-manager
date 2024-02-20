@@ -1,0 +1,127 @@
+<section>
+  <div class="d-flex gap-2 align-items-center mt-5 mb-2">
+    <mat-icon>view_list</mat-icon>
+    <h1 class="mb-0">Task list</h1>
+    <button
+      (click)="addNewTask()"
+      mat-icon-button
+      color="primary"
+      aria-label="Example icon button with a home icon"
+    >
+      <mat-icon>add_box</mat-icon>
+    </button>
+  </div>
+
+  <mat-table
+    cdkDropListData="dataSource"
+    cdkDropList
+    (cdkDropListDropped)="drop($event)"
+    class="rounded rounded-4 bg-light text-dark"
+    mat-table
+    [dataSource]="dataSource"
+    matSort
+    (matSortChange)="sortData($event)"
+    [cdkDropListDisabled]="dragDisabled"
+  >
+    <ng-container matColumnDef="position">
+      <mat-header-cell *matHeaderCellDef> No.</mat-header-cell>
+      <mat-cell *matCellDef="let task; let i = index">
+        <div class="d-flex align-items-center gap-2 text-dark">
+          <mat-icon class="cursor-grab" (mousedown)="dragDisabled = false"
+            >reorder</mat-icon
+          >
+          {{ i + 1 }}
+        </div>
+      </mat-cell>
+    </ng-container>
+
+    <!-- Title Column -->
+    <ng-container matColumnDef="title">
+      <mat-header-cell class="text-center" *matHeaderCellDef>
+        Title</mat-header-cell
+      >
+      <mat-cell
+        (click)="openTask(task)"
+        class="text-dark cursor-pointer"
+        *matCellDef="let task"
+        >{{ task.title }}</mat-cell
+      >
+    </ng-container>
+
+    <!-- Status Column -->
+    <ng-container matColumnDef="status">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>
+        Status</mat-header-cell
+      >
+      <mat-cell *matCellDef="let task">
+        <div
+          class="d-flex align-items-center"
+          [ngClass]="getStatusColor(task.status)"
+        >
+          <span>{{ task?.status?? '-' }}</span>
+          <button mat-icon-button [matMenuTriggerFor]="statusMenu">
+            <mat-icon
+              class="sm-icon text-secondary opacity-25 pt-1 cursor-pointer"
+              >edit</mat-icon
+            >
+          </button>
+          <mat-menu #statusMenu="matMenu">
+            <button
+              mat-menu-item
+              *ngFor="let st of status"
+              (click)="onStatusChange(task, st)"
+            >
+              {{ st }}
+            </button>
+          </mat-menu>
+        </div>
+      </mat-cell>
+    </ng-container>
+
+    <!-- Priority Column -->
+    <ng-container matColumnDef="priority">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>
+        Priority</mat-header-cell
+      >
+      <mat-cell
+        class="cursor-pointer"
+        (click)="openTask(task)"
+        *matCellDef="let task"
+        [style.color]="getPriorityColor(task.priority)"
+      >
+        {{ task?.priority?? '-' }}
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="dueDate">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>
+        Due date</mat-header-cell
+      >
+      <mat-cell
+        class="cursor-pointer"
+        (click)="openTask(task)"
+        *matCellDef="let task"
+      >
+        {{ (task.dueDate | date) ?? "-" }}
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="ellipsis">
+      <mat-header-cell *matHeaderCellDef></mat-header-cell>
+      <mat-cell *matCellDef="let task">
+        <button mat-icon-button (click)="openTask(task)">
+          <mat-icon class="sm-icon text-secondary pt-1 cursor-pointer"
+            >arrow_forward_ios</mat-icon
+          >
+        </button>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="getDisplayedColumns()"></mat-header-row>
+    <mat-row
+      cdkDrag
+      [cdkDragData]="row"
+      *matRowDef="let row; columns: getDisplayedColumns()"
+    ></mat-row>
+  </mat-table>
+</section>
